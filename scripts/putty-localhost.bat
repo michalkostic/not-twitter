@@ -1,0 +1,1 @@
+C:\Programs\Putty\putty.exe -load "telnet localhost:8001"
