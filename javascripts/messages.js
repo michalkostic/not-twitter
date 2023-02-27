@@ -21,14 +21,16 @@ const SAMPLE_MESSAGES = [
 
 const MESSAGES_STORAGE_KEY="messages";
 
+let storage = localStorage;
+
 function addMessage(message) {
     let messages = getMessages()
     messages.push(message);
-    sessionStorage.setItem(MESSAGES_STORAGE_KEY, JSON.stringify(messages));
+    storage.setItem(MESSAGES_STORAGE_KEY, JSON.stringify(messages));
 }
 
 function getMessages() {
-    let messagesSerialized = sessionStorage.getItem(MESSAGES_STORAGE_KEY);
+    let messagesSerialized = storage.getItem(MESSAGES_STORAGE_KEY);
     if (messagesSerialized) {
         return JSON.parse(messagesSerialized);
     } else {
@@ -37,5 +39,5 @@ function getMessages() {
 }
 
 function clearMessages() {
-    return sessionStorage.removeItem(MESSAGES_STORAGE_KEY);
+    return storage.removeItem(MESSAGES_STORAGE_KEY);
 }

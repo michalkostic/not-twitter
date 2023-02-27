@@ -14,10 +14,10 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-4">
-                    <div class="h3">Not Twitter</div>
+                <div class="h3">Not Twitter</div>
             </div>
             <div class="col-1 ms-auto mr-1">
-                    <div>Unread 10</div>
+                <div>Unread <span class="message-count">10</span></div>
             </div>
         </div>
         <div class="row">
@@ -33,6 +33,10 @@
     </div>
     <script src="javascripts/messages.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            refreshMessageCount();
+        });
+
         function publishNewMessage() {
             addMessage({
                 "avatar": "images/person-circle.svg",
@@ -41,6 +45,12 @@
             document.getElementById("message-text").value = null;
             window.location.href = "/"
         }
+
+        function refreshMessageCount() {
+            document.getElementsByClassName("message-count")[0].innerHTML = getMessages().length;
+        }
+
+        setInterval(refreshMessageCount, 1000);
     </script>
 </body>
 
