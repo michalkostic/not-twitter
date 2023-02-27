@@ -22,15 +22,26 @@
         </div>
         <div class="row">
             <div class="col">
-                <textarea></textarea>
+                <textarea id="message-text"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary" onclick="publishNewMessage()">Submit</button>
             </div>
         </div>
     </div>
+    <script src="javascripts/messages.js"></script>
+    <script>
+        function publishNewMessage() {
+            addMessage({
+                "avatar": "images/person-circle.svg",
+                "text": document.getElementById("message-text").value
+            });
+            document.getElementById("message-text").value = null;
+            window.location.href = "/"
+        }
+    </script>
 </body>
 
 </html>
