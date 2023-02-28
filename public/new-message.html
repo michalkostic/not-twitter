@@ -39,6 +39,7 @@
 
         function publishNewMessage() {
             addMessage({
+                "id": crypto.randomUUID(),
                 "avatar": "images/person-circle.svg",
                 "text": document.getElementById("message-text").value
             });
