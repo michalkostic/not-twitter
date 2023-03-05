@@ -8,10 +8,15 @@ function App({children}) {
 
   // periodically refresh
   useEffect(() => {
-    setMessages(getMessages());
+    getMessages().then(
+      (messages) => setMessages(messages)
+    );
+
     const fetchMessagesInterval = setInterval(() => {
-      setMessages(getMessages());
-    }, 1000);
+        getMessages().then(
+          (messages) => setMessages(messages)
+        );
+      }, 10000);
     return () => clearInterval(fetchMessagesInterval);
   }, []);
 
